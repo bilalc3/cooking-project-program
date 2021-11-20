@@ -1,12 +1,13 @@
 
+
 .recipe-preview {
     padding: 10px 60px;
     margin: 20px 0;
     border-bottom: 1px solid lightgrey;
     text-align: center;
 
-}
 
+}
 
 .recipe-preview:hover {
     box-shadow: 1.3px 3.2px 5.2x rgba(0, 0, 0, 0.2);
@@ -18,10 +19,24 @@
     color: darkblue;
 }
 
+.title {
+    font-family: arial, sans-serif;
+    font-size: 35px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 1px;
+    background-color: lightgrey;
+    color: black;
+
+}
 .recipe-preview > img {
     border-radius: 8px;
     max-width: 250px;
 
     height: auto;
+    color: #999999;
+
 }
+
+
 
