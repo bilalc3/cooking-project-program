@@ -1,0 +1,27 @@
+
+.recipe-preview {
+    padding: 10px 60px;
+    margin: 20px 0;
+    border-bottom: 1px solid lightgrey;
+    text-align: center;
+
+}
+
+
+.recipe-preview:hover {
+    box-shadow: 1.3px 3.2px 5.2x rgba(0, 0, 0, 0.2);
+    color: black;
+}
+
+
+.recipe-preview > a {
+    color: darkblue;
+}
+
+.recipe-preview > img {
+    border-radius: 8px;
+    max-width: 250px;
+
+    height: auto;
+}
+
