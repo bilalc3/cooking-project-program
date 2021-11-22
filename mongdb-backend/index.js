@@ -6,15 +6,11 @@ dotenv.config();
 
 
 const app = express();
+const mongodb_uri = process.env.MONGODB_URI;
 const PORT = process.env.PORT || 8080;
 
-app.use(express.json());
 
-
-username = process.env.DB_USERNAME;
-password = process.env.DB_PASSWORD;
-const uri = `mongodb+srv://${username}:${password}@cluster0.ciaf1.mongodb.net/RecipeDB`;
-mongoose.connect(uri);
+mongoose.connect(mongodb_uri);
 
 const connection = mongoose.connection;
 connection.once('open', () => {

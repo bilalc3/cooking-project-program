@@ -3,32 +3,44 @@ let Recipe = require('../models/recipe-model');
 
 
 router.route('/').get((req, res) => {
-    title = req.body.title;
+    title = req.query.title;
     
+    if (!title)
+        return res.status(400).json("Error: 'title' was not passed")
+
     Recipe.find({'title': title})
-    .then(recipes => res.json(recipes))
-    .catch(err => res.status(400).json('Error ' + err));
+        .then(recipes => res.json(recipes))
+        .catch(err => res.status(400).json('Error ' + err));
 });
 
 
 router.route('/search').get((req, res) => {
-    title = req.body.title;
-    limit = req.body.limit || null;
+    title = req.query.title;
+    limit = req.query.limit || null;
+    
+    if (limit)
+        limit = parseInt(limit, 10)
+    if (!title)
+        return res.status(400).json("Error: 'title' was not passed")
+    
     
     Recipe.find({$text: {$search: title}})
-    .select(['title', 'source', 'description', 'preview_image_url'])
-    .sort( { score: { $meta: "textScore" } } )
-    .limit(limit)
-    .then(recipes => res.json(recipes))
-    .catch(err => res.status(400).json('Error ' + err));
+        .select(['title', 'total_price', 'source', 'description', 'preview_image_url'])
+        .sort( { score: { $meta: "textScore" } } )
+        .limit(limit)
+        .then(recipes => res.json(recipes))
+        .catch(err => res.status(400).json('Error ' + err));
 });
 
 
 router.route('/price').get((req, res) => {
-    minPrice = req.body.minPrice || 0;
-    maxPrice = req.body.maxPrice || 100000000;
-    limit = req.body.limit || null;
+    minPrice = req.query.minPrice || 0;
+    maxPrice = req.query.maxPrice || 100000000;
+    limit = req.query.limit || null;
     
+    if (limit) limit = parseInt(limit, 10)
+    if (minPrice) minPrice = parseFloat(minPrice)
+    if (maxPrice) maxPrice = parseFloat(maxPrice)
 
     Recipe.find({ total_price: { $lte: maxPrice, $gte: minPrice } })
         .select(['title', 'total_price', 'source', 'description', 'preview_image_url'])
