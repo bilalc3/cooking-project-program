@@ -1,8 +1,14 @@
+
+import './App.css';
+import Choose from './Choose';
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom' 
+import { Link } from "react-router-dom";
+import './assets/css/choose.css'; 
 import Navbar from './Navbar';
 import Home from './Home';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import RecipeDetails from './RecipeDetails';
 import image from './back.jpeg';
+
 
 function App() {
   return (
@@ -15,6 +21,9 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Home />
+          </Route>
+          <Route exact path = "/choose" >
+            <Choose />
           </Route>
           <Route path="/recipes/:id">
             <RecipeDetails />
