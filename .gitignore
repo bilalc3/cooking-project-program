@@ -1,5 +1,0 @@
-mongdb-backend/node_modules
-scraper/*.json
-scraper/a.txt
-scraper/test.py
-./.gitignore
