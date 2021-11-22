@@ -26,6 +26,7 @@ const Choose = () => {
             <h1 className="title">Choose a recipe from the following list!</h1>
             {recipes.map((recipe) => (  
                 <div className="recipe-preview" key={recipe.id}> 
+         
                     <a href="/choose" className="recipe-title">{recipe.title}</a> 
 
                     <p className="recipe- description">{recipe.description}</p>    
