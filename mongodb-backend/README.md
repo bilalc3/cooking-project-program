@@ -7,18 +7,18 @@ npm install
 Create `.env` file with `MONGODB_URI` used to connect to your MongoDB server.   
 **To Start the server: `npm start`**
 # API spec
-## /
+## /recipes
 Returns full recipe data by title.  
 **Method:** `GET`  
 **Query Params:**  
    `title=[string]` *(required)*
-## /search
+## /recipes/search
 Returns recipes w/ basic info matching given title.  
 **Method:** `GET`  
 **Query Params:**  
    `title=[string]` *(required)*  
    `limit=[integer]` *(optional)* - max number of recipes to return (default: return all recipes)
-## /price
+## /recipes/price
 Returns recipes w/ basic info matching given price range.  
 **Method:** `GET`  
 **Query Params:**  
