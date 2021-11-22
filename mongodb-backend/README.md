@@ -1,7 +1,7 @@
 # Install
 Install all node modules:
 ```console
-cd mongdb-backend  
+cd mongodb-backend
 npm install
 ```
 Create `.env` file with `MONGODB_URI` used to connect to your MongoDB server.   
