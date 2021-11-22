@@ -9,7 +9,7 @@ Returns recipes w/ basic info matching given title.
 **Method:** `GET`  
 **Data Params:**  
    `title=[string]` *(required)*  
-   `limit=[integer]` *(optional)* - max number of recipes to return (default: return all recipes)
+   `limit=[integer]` *(optional)* - max number of recipe suggestions to return (default: return all recipes)
 ## /price
 Returns recipes w/ basic info matching given price range.  
 **Method:** `GET`  
