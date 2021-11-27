@@ -1,10 +1,8 @@
-import { Router } from 'express'
-import { Recipe } from '../models/recipe-model'
-
-export const router = Router();
+import { RequestHandler } from 'express';
+import { Recipe } from '../models/recipe-model';
 
 
-router.route('/').get((req, res) => {
+export const getRecipe: RequestHandler = (req, res) => {
     let title = req.query.title;
     
     // TODO remove duplicate code
@@ -19,9 +17,10 @@ router.route('/').get((req, res) => {
     Recipe.find({'title': title})
         .then(recipes => res.json(recipes))
         .catch(err => res.status(400).json('Error ' + err));
-});
+};
 
-router.route('/search').get((req, res) => {
+
+export const searchRecipe: RequestHandler = (req, res) => {
     let title = req.query.title;
     let limit: number = Number(req.query.limit) || 0;
     
@@ -39,13 +38,13 @@ router.route('/search').get((req, res) => {
         .limit(limit)
         .then(recipes => res.json(recipes))
         .catch(err => res.status(400).json('Error ' + err));
-});
+};
 
 
-router.route('/price').get((req, res) => {
+export const getRecipesInPriceRange: RequestHandler = (req, res) => {
     let minPrice: number = Number(req.query.minPrice) || 0;
     let maxPrice: number = Number(req.query.maxPrice) || 100000000;
-    let limit: number = Number(req.query.limit) || null;
+    let limit: number = Number(req.query.limit) || 0;
 
     
     Recipe.find({ total_price: { $lte: maxPrice, $gte: minPrice } })
@@ -53,4 +52,4 @@ router.route('/price').get((req, res) => {
         .limit(limit)
         .then(recipes => res.json(recipes))
         .catch(err => res.status(400).json('Error message: ' + err));
-});
+};

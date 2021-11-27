@@ -2,10 +2,10 @@
   "name": "mongdb-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.ts",
+  "main": "src/server.ts",
   "scripts": {
-    "start": "ts-node index.ts",
-    "dev": "nodemon -e ts --exec \"npx ts-node --transpile-only index.ts\""
+    "start": "ts-node src/server.ts",
+    "dev": "nodemon -e ts --exec \"npx ts-node --transpile-only src/server.ts\""
   },
   "author": "",
   "license": "ISC",

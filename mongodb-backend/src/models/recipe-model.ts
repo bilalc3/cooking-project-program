@@ -1,4 +1,4 @@
-import { Schema, model } from 'mongoose'
+import { Schema, model } from 'mongoose';
 
 
 const recipeSchema = new Schema({
@@ -7,11 +7,11 @@ const recipeSchema = new Schema({
     image_url: String,
     preview_image_url: String,
     description: String,
-    ingredients_list: [{ 
-        heading: String, 
-        ingredients: [String] 
+    ingredients_list: [{
+        heading: String,
+        ingredients: [ String ]
     }],
-    method: [String],
+    method: [ String ],
     time: {
         preparation: String,
         cooking: String
