@@ -1,28 +1,37 @@
-const router = require('express').Router();
-let Recipe = require('../models/recipe-model');
+import { Router } from 'express'
+import { Recipe } from '../models/recipe-model'
+
+export const router = Router();
 
 
 router.route('/').get((req, res) => {
-    title = req.query.title;
+    let title = req.query.title;
     
-    if (!title)
+    // TODO remove duplicate code
+    if (title == null)
         return res.status(400).json("Error: 'title' was not passed")
+    else if (typeof title !== 'string' && !(title instanceof String))   // if not a string 
+        return res.status(400).json(`Error: 'title' should be a single string value, recieved ${typeof title}`)
+    else
+        title = title.toString()
 
+    
     Recipe.find({'title': title})
         .then(recipes => res.json(recipes))
         .catch(err => res.status(400).json('Error ' + err));
 });
 
-
 router.route('/search').get((req, res) => {
-    title = req.query.title;
-    limit = req.query.limit || null;
+    let title = req.query.title;
+    let limit: number = Number(req.query.limit) || 0;
     
-    if (limit)
-        limit = parseInt(limit, 10)
-    if (!title)
+    if (title == null)
         return res.status(400).json("Error: 'title' was not passed")
-    
+    else if (typeof title !== 'string' && !(title instanceof String))   // if not a string 
+        return res.status(400).json(`Error: 'title' should be a single string value, recieved ${typeof title}`)
+    else
+        title = title.toString()
+
     
     Recipe.find({$text: {$search: title}})
         .select(['title', 'total_price', 'source', 'description', 'preview_image_url'])
@@ -34,20 +43,14 @@ router.route('/search').get((req, res) => {
 
 
 router.route('/price').get((req, res) => {
-    minPrice = req.query.minPrice || 0;
-    maxPrice = req.query.maxPrice || 100000000;
-    limit = req.query.limit || null;
-    
-    if (limit) limit = parseInt(limit, 10)
-    if (minPrice) minPrice = parseFloat(minPrice)
-    if (maxPrice) maxPrice = parseFloat(maxPrice)
+    let minPrice: number = Number(req.query.minPrice) || 0;
+    let maxPrice: number = Number(req.query.maxPrice) || 100000000;
+    let limit: number = Number(req.query.limit) || null;
 
+    
     Recipe.find({ total_price: { $lte: maxPrice, $gte: minPrice } })
         .select(['title', 'total_price', 'source', 'description', 'preview_image_url'])
         .limit(limit)
         .then(recipes => res.json(recipes))
         .catch(err => res.status(400).json('Error message: ' + err));
 });
-
-
-module.exports = router;

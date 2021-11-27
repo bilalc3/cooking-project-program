@@ -1,6 +1,5 @@
-const mongoose = require('mongoose');
+import { Schema, model } from 'mongoose'
 
-const Schema = mongoose.Schema;
 
 const recipeSchema = new Schema({
     source: String,
@@ -18,13 +17,11 @@ const recipeSchema = new Schema({
         cooking: String
     },
     serving_size: String,
-    price_per_serving: mongoose.Number,
-    total_price: mongoose.Number,
+    price_per_serving: Number,
+    total_price: Number,
 });
+
 
 recipeSchema.index({title: 'text'});
 
-
-const Recipe = mongoose.model('recipes', recipeSchema);
-
-module.exports = Recipe;
+export const Recipe = model('recipes', recipeSchema);

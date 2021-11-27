@@ -1,7 +1,8 @@
-const express = require('express');
-const mongoose = require('mongoose');
+import express from 'express'
+import mongoose from 'mongoose'
+import dotenv from 'dotenv'
+import { router } from './routes/recipes'
 
-const dotenv = require('dotenv');
 dotenv.config();
 
 
@@ -12,14 +13,12 @@ const PORT = process.env.PORT || 8080;
 
 mongoose.connect(mongodb_uri);
 
-const connection = mongoose.connection;
-connection.once('open', () => {
+mongoose.connection.once('open', () => {
     console.log('Connection to MongoDB is up')
 });
 
 
-const recipeRouter = require('./routes/recipes');
-app.use('/recipes', recipeRouter);
+app.use('/recipes', router);
 
 
 app.listen(
