@@ -17,6 +17,8 @@ Returns recipes w/ basic info matching given title.
 **Method:** `GET`  
 **Query Params:**  
    `title=[string]` *(required)*  
+   `minPrice=[float]` *(optional)* - minimum recipe price (default: 0)  
+   `maxPrice=[float]` *(optional)* - maximum recipe price (default: 100000000)  
    `limit=[integer]` *(optional)* - max number of recipes to return (default: return all recipes)  
    `skip=[integer]` *(optional)* - number of recipes to skip (default: 0)
 ## /recipes/price

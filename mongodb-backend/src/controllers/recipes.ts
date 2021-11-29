@@ -23,6 +23,8 @@ export const getRecipe: RequestHandler = (req, res) => {
 
 export const searchRecipe: RequestHandler = (req, res) => {
     let title = req.query.title;
+    let minPrice: number = Number(req.query.minPrice) || 0;
+    let maxPrice: number = Number(req.query.maxPrice) || 100000000;
     let limit: number = Number(req.query.limit) || 100000;
     let skip: number = Number(req.query.skip) || 0;
     
@@ -41,10 +43,19 @@ export const searchRecipe: RequestHandler = (req, res) => {
                   "query": title,
                   "path": "title",
                 //   "fuzzy": {}
-                },
+                }
                 // "highlight": {
                 //   "path": "title"
                 // }
+            }
+        },
+
+        {
+            $match: {
+                'total_price': {
+                    $gte: minPrice, 
+                    $lte: maxPrice
+                }
             }
         },
 
