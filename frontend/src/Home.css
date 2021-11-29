@@ -18,6 +18,10 @@
     }
 }
 
+.price-range-slider{
+    color: blue;
+    margin: 20px;
+}
 
 .search-container{
     display: flex;
