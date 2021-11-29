@@ -25,7 +25,7 @@ export const searchRecipe: RequestHandler = (req, res) => {
     let title = req.query.title;
     let minPrice: number = Number(req.query.minPrice) || 0;
     let maxPrice: number = Number(req.query.maxPrice) || 100000000;
-    let limit: number = Number(req.query.limit) || 100000;
+    let limit: number = Number(req.query.limit) || 100;
     let skip: number = Number(req.query.skip) || 0;
     
     if (title == null)
@@ -85,7 +85,7 @@ export const searchRecipe: RequestHandler = (req, res) => {
 export const getRecipesInPriceRange: RequestHandler = (req, res) => {
     let minPrice: number = Number(req.query.minPrice) || 0;
     let maxPrice: number = Number(req.query.maxPrice) || 100000000;
-    let limit: number = Number(req.query.limit) || 0;
+    let limit: number = Number(req.query.limit) || 100;
     let skip: number = Number(req.query.skip) || 0;
 
     

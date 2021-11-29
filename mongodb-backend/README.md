@@ -19,7 +19,7 @@ Returns recipes w/ basic info matching given title.
    `title=[string]` *(required)*  
    `minPrice=[float]` *(optional)* - minimum recipe price (default: 0)  
    `maxPrice=[float]` *(optional)* - maximum recipe price (default: 100000000)  
-   `limit=[integer]` *(optional)* - max number of recipes to return (default: return all recipes)  
+   `limit=[integer]` *(optional)* - max number of recipes to return (default: 100)  
    `skip=[integer]` *(optional)* - number of recipes to skip (default: 0)
 ## /recipes/price
 Returns recipes w/ basic info matching given price range.  
@@ -27,7 +27,7 @@ Returns recipes w/ basic info matching given price range.
 **Query Params:**  
    `minPrice=[float]` *(optional)* - minimum recipe price (default: 0)  
    `maxPrice=[float]` *(optional)* - maximum recipe price (default: 100000000)  
-   `limit=[integer]` *(optional)* - max number of recipes to return (default: return all recipes)  
+   `limit=[integer]` *(optional)* - max number of recipes to return (default: 100)  
    `skip=[integer]` *(optional)* - number of recipes to skip (default: 0)
 
 # Data format
