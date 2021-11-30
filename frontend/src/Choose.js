@@ -8,35 +8,15 @@ import useFetch from "./useFetch";
 
 
 
-const recipelst = [
-    {
-        title: "Double Layer Pumpkin Cheesecake",
-        description: 'A great alternative to pumpkin pie, especially for those cheesecake fans out there. Serve topped with whipped cream',
-        body: 'lorem',
-        image: pumpkin_img, id: 1
-    },
-    {
-        title: "Homemade Mac and Cheese",
-        description: 'This is a nice rich mac and cheese. Serve with a salad for a great meatless dinner',
-        body: 'lorem',
-        image: macncheese_img, id: 2
-    },
-    {
-        title: "Pizza",
-        description: 'Tastes like newspaper pizza, try it for yourself!',
-        body: 'lorem',
-        image: pizza_img, id: 3
-    }
-];
 // http://localhost:8080/recipes/search?title=chicken
 
 const Choose = () => {
-    const searchterm = "chicken";
-    const recipelst1 = `http://localhost:8080/recipes/search?title=${searchterm}`;
+    const searchterm = "ice cream";
+    const recipelst = `http://localhost:8080/recipes/search?title=${searchterm}`;
     const [recipes, setRecipes] = useState(null)
 
     useEffect ( () => {
-        fetch("http://localhost:8080/recipes/search?title=chicken")
+        fetch(recipelst)
             .then(res => {
                 return res.json();
             })
@@ -57,7 +37,7 @@ const Choose = () => {
 
                     <a href="/recipes/title" className="recipe-title">{recipe.title}</a>
                     <h6 className="price">${recipe.total_price}</h6>
-                    <p className="recipe-description">{recipe.description}</p>
+                    <p id="better-text" className="recipe-description">{recipe.description}</p>
                     <img src={recipe.preview_image_url} alt="" />
                     
                 </div>
