@@ -13,8 +13,7 @@ import image from './back.jpeg';
 function App() {
   return (
     <Router>
-    <div className="App" style={{ backgroundImage: `url(${image})`, backgroundRepeat:"no-repeat", backgroundSize:"contain", 
-    height:1000,width:1600 }}>
+    <div className="App" style={{ backgroundImage: `url(${image})`, backgroundRepeat:"no-repeat", backgroundSize:"cover", height:'100vh'}}>
 
       <Navbar />
       <div className="content">
