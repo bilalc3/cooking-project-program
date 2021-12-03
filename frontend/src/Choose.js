@@ -5,14 +5,21 @@ import pumpkin_img from "./assets/images/pumpkinpie.png";
 import macncheese_img from "./assets/images/macncheese.png";
 import pizza_img from "./assets/images/pizza.png";
 import useFetch from "./useFetch";
+import { Link, useParams, useLocation, useHistory} from "react-router-dom";
 
 
 
 // http://localhost:8080/recipes/search?title=chicken
 
-const Choose = () => {
-    const searchterm = "ice cream";
-    const recipelst = `http://localhost:8080/recipes/search?title=${searchterm}`;
+const Choose = ( props ) => {
+
+    const { title } = useParams();
+    const { minprice } = useParams();
+    const { maxprice } = useParams();
+
+
+    const searchterm = "chicken";
+    const recipelst = `http://localhost:8080/recipes/search?title=${title}&minPrice=${minprice}&maxPrice=${maxprice}`;
     const [recipes, setRecipes] = useState(null)
 
     useEffect ( () => {
@@ -30,15 +37,21 @@ const Choose = () => {
 
     return (
         <div className="choose">
+
             <h1 className="title">Choose a recipe from the following list!</h1>
 
             {recipes && recipes.map((recipe) => (
                 <div className="recipe-preview" key={recipe._id}>
-
-                    <a href="/recipes/title" className="recipe-title">{recipe.title}</a>
+                    <Link to={`/recipes/${recipe.title}`}>
+                        <h3 className="recipe-title">{recipe.title}</h3>
+                    </Link>
                     <h6 className="price">${recipe.total_price}</h6>
                     <p id="better-text" className="recipe-description">{recipe.description}</p>
-                    <img src={recipe.preview_image_url} alt="" />
+                     <Link to={`/recipes/${recipe.title}`}>
+                        <img src={recipe.preview_image_url} alt="" />
+                      </Link>
+                       
+   
                     
                 </div>
             ))} 
