@@ -3,25 +3,29 @@ import { Slider } from '@material-ui/core';
 
 const minDistance = 1.5;
 
-export default function PriceSlider() {
-    const [value, setValue] = useState([10, 20]);
+
+export default function PriceSlider({ setSearchState }) {
+    const [value, setValue] = useState([0, 15]);
+
 
     const valueLabelFormat = (value) => {
         return `$${value}`;
     };
-
+    
     const handleChange = (event, newValue) => {
         if (!Array.isArray(newValue)) {
             return;
         }
+        
+        const updatedValues = [
+            Math.min(newValue[0], value[1] - minDistance), 
+            Math.max(newValue[1], value[0] + minDistance)
+        ];
 
-        if (newValue[0] !== value[0]) {
-            setValue([Math.min(newValue[0], value[1] - minDistance), value[1]]);
-        } else {
-            setValue([value[0], Math.max(newValue[1], value[0] + minDistance)]);
-        }
+        setValue(updatedValues);
+        setSearchState({ 'minPrice': updatedValues[0], 'maxPrice': updatedValues[1] });
     };
-
+    
     return (
         <Slider
             getAriaLabel={() => 'Price range slider'}
@@ -34,11 +38,7 @@ export default function PriceSlider() {
             getAriaValueText={valueLabelFormat}
             valueLabelDisplay="auto"
             sx={{
-                width: '100px',
-                color: 'success.main',
-                '& .MuiSlider-thumb': {
-                    borderRadius: '1px',
-                },
+                fontSize: '10px'
             }}
         />
     );
