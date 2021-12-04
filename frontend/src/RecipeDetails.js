@@ -1,75 +1,61 @@
 import { Checkbox } from "@material-ui/core";
+import {  } from "@material-ui/core";
 import { useParams } from "react-router-dom";
 import useFetch from "./useFetch";
 
-
 const RecipeDetails = () => {
-    const { id } = useParams();
-    const { data: recipes, error, isPending } = useFetch('http://localhost:3000/recipes/' + id);
-    //const ingredients = { ingredients };
-    //for (const element of ingredients) { 
-    //    console.log(element);
-    //}
+    const { title } = useParams();
+    const { data: recipes, error, isPending } = useFetch('http://localhost:8080/recipes?title=' + title);
 
-    const ingredients = ["Cheese", "Tomatoes"];
- 
-    return ( 
-        
-    
-        <div className="recipe-details">
-            {ingredients.forEach(element => 
-            {return (
-                <div className="ingredients">
-                
-                { element }</div>
-            )})}
-             { isPending && <div>Loading...</div> }
-            { error && <div>{ error }</div> }
-            { recipes && 
-            (
-                <article>
-                    { recipes.image_url }
-                  <h2>{ recipes.title }</h2>
-                  <div>{ recipes.description }</div>
-                  <br/>
-                  <h2>Ingredients Needed for { recipes.title } </h2>
-            
-                  
-                  {recipes.ingredients_list.map(element => 
-                     {return (
-                     <div className="ingredients"> 
-                     
-                { element.heading }
-                <br />
+    return (
+        <div className="recipe-details" >
 
-                
-                { element.ingredients.map (element =>
-                {return (
-                    <div className="inglist">
-                        <Checkbox />
-                        {element}
-                         </div>
-                )})}
-                </div>
-                )})}
-                <br />
-                <h2>Cooking Instructions </h2>
-                { recipes.method.map (element =>
-                {return (
-                    <div className="method">
-                        {element} </div>
-                )})}
-                    <br />
-                    <div>Serving Size: { recipes.serving_size } </div>
+            {isPending && <div>Loading...</div>}
+            {error && <div>{error}</div>}
+            {recipes &&
+                (
+                    <article>
+                        <div align="center"><h1>{recipes[0].title}</h1></div>
+                        <img src={recipes[0].image_url} alt="" />
+                        <div id="description" align="left"> {recipes[0].description}</div>
+                        <br />
+                        <div align="left"> <h2>Ingredients Needed {recipes[0].title} </h2>
 
-                    <div>Preparation Time: { recipes.time.preparation } </div>
-                    <div>Cook Time: { recipes.time.cooking } </div>
-                </article>
-              )}
-            
+                            {recipes[0].ingredients_list.map(element => {
+                                return (
+                                    <div className="ingredients">
+                                        {element.ingredients.map(element => {
+                                            return (
+                                                <div className="inglist">
+                                                    <Checkbox />
+                                                    {element}
+                                                </div>
+                                            )
+                                        })}
+                                    </div>
+                                )
+                            })}
+                            <br />
+                            <h2>Cooking Instructions </h2>
+                            {recipes[0].method.map(element => {
+                                return (
+                                    <div className="method">
+                                        <Checkbox />
+                                        {element} <br />
+                                    </div>
+                                )
+                            }
+                            )
+                            }
+                            <br />
+                            <div>Serving Size: {recipes[0].serving_size} </div>
+                            <div>Preparation Time: {recipes[0].time.preparation} </div>
+                            <div>Cook Time: {recipes[0].time.cooking} </div>
+                        </div>
+                    </article>
+                )}
         </div>
-     )
-     
+    )
 }
- 
+
 export default RecipeDetails;

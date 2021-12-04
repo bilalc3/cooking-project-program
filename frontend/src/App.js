@@ -1,4 +1,3 @@
-
 import './App.css';
 import Choose from './Choose';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom' 
@@ -24,7 +23,7 @@ function App() {
           <Route exact path = "/choose/:title/:minprice/:maxprice" >
             <Choose />
           </Route>
-          <Route path="/recipes/:id">
+          <Route path="/recipes/:title">
             <RecipeDetails />
           </Route>
         </Switch>
