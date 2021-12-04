@@ -1,7 +1,7 @@
 import { Checkbox } from "@material-ui/core";
+import {  } from "@material-ui/core";
 import { useParams } from "react-router-dom";
 import useFetch from "./useFetch";
-import RoomIcon from '@material-ui/icons/Room';
 
 const RecipeDetails = () => {
     const { title } = useParams();
@@ -40,7 +40,7 @@ const RecipeDetails = () => {
                             {recipes[0].method.map(element => {
                                 return (
                                     <div className="method">
-                                        <RoomIcon />
+                                        <Checkbox />
                                         {element} <br />
                                     </div>
                                 )
