@@ -21,7 +21,7 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route exact path = "/choose" >
+          <Route exact path = "/choose/:title/:minprice/:maxprice" >
             <Choose />
           </Route>
           <Route path="/recipes/:id">
