@@ -15,8 +15,8 @@ const RecipeDetails = () => {
             {recipes &&
                 (
                     <article>
+                        <div align="center"><h1>{recipes[0].title}</h1></div>
                         <img src={recipes[0].image_url} alt="" />
-                        <div align="left"> <h2>{recipes[0].title}</h2></div>
                         <div id="description" align="left"> {recipes[0].description}</div>
                         <br />
                         <div align="left"> <h2>Ingredients Needed {recipes[0].title} </h2>

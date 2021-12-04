@@ -25,7 +25,7 @@ function App() {
           <Route exact path = "/choose/:title/:minprice/:maxprice" >
             <Choose />
           </Route>
-          <Route path="/recipes/:id">
+          <Route path="/recipes/:title">
             <RecipeDetails />
           </Route>
         </Switch>
