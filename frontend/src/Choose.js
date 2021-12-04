@@ -16,9 +16,9 @@ const recipelst = [
     {title: "Pizza", 
     description: 'Tastes like newspaper pizza, try it for yourself!', 
     body: 'lorem',
-    image: pizza_img, id:3} 
-]; 
-
+    image: pizza_img, id:3}   
+];            
+//hi
 const Choose = () => {
     const [recipes, setRecipes] = useState(recipelst)
     return (  
