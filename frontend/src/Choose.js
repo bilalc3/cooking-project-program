@@ -18,13 +18,13 @@ const recipelst = [
     body: 'lorem',
     image: pizza_img, id:3}   
 ];            
-//hi
+
 const Choose = () => {
     const [recipes, setRecipes] = useState(recipelst)
     return (  
         <div className="choose">
             <h1 className="title">Choose a recipe from the following list!</h1>
-            {recipes.map((recipe) => (  
+            {recipes.map((recipe) => (   
                 <div className="recipe-preview" key={recipe.id}> 
          
                     <a href="/choose" className="recipe-title">{recipe.title}</a> 
