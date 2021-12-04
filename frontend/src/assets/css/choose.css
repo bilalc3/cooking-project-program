@@ -1,5 +1,4 @@
 
-
 .recipe-preview {
     padding: 10px 60px;
     margin: 20px 0;
@@ -9,6 +8,7 @@
 
 }
 
+/* effect with hover */ 
 .recipe-preview:hover {
     box-shadow: 1.3px 3.2px 5.2x rgba(0, 0, 0, 0.2);
     color: black;
@@ -25,29 +25,53 @@
 }
 
 
-.recipe-preview > a {
-    color: darkblue;
-    font-size: 20px;  
+
+.recipe-preview > h6 {
+    color: maroon; 
+    font-family: Georgia, 'Times New Roman', Times, serif;
+  
 }
 
+.recipe-preview > a {
+    color: darkblue;
+    font-size: 40px;  
+}
+
+.recipe-title
+{
+    color: darkblue;
+    font-size: 40px;
+    
+     
+}
+
+
+
 .title {
-    font-family: Helvetica, sans-serif;
-    font-size: 35px;
-    font-weight: bold;
+    font-family: 'Dancing Script', cursive; 
+    font-size: 30px;
+    font-weight: lighter;
     margin-top: 20px;
     margin-bottom: 1px;
     background-color:white;
     color: black;
 
 }
-.recipe-preview > img {
+.recipe-preview > a > img {
     border-radius: 8px;
-    max-width: 250px;
-
+    max-width: 300px;
     height: auto;
     color: #999999;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
 
 }
+#better-text {
+    font-family: fantasy;
+    font-size: 20px;
+
+  }
+
 
 
 
