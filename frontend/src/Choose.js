@@ -13,12 +13,11 @@ import { Link, useParams, useLocation, useHistory} from "react-router-dom";
 
 const Choose = ( props ) => {
 
+    // parsed parameters form url
     const { title } = useParams();
     const { minprice } = useParams();
     const { maxprice } = useParams();
 
-
-    const searchterm = "chicken";
     const recipelst = `http://localhost:8080/recipes/search?title=${title}&minPrice=${minprice}&maxPrice=${maxprice}`;
     const [recipes, setRecipes] = useState(null)
 
